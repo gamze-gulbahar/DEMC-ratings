@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <title th:utext="${title}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-steel fixed-top" style="background-color:#1F6032">
+    <div class="container">
+        <a class="navbar-brand text-white"> Best Breaking Bad Episodes</a>
+    </div>
+</nav>
+<div class="container" style="margin-top: 5%">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> Order</th>
+                    <th> Episode Title</th>
+                    <th> Average Rating</th>
+                    <th> Season Number</th>
+                    <th> Episode Number</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="episode : ${episodeList}">
+                    <td><span th:text="${episodeStat.index} + 1"> Episode Title </span></td>
+                    <td><span th:text="${episode.getPrimaryTitle()}"> Episode Title </span></td>
+                    <td><span th:text="${episode.getAverageRating()}"> Average Rating </span></td>
+                    <td><span th:text="${episode.getSeasonNumber()}"> Season Number </span></td>
+                    <td><span th:text="${episode.getEpisodeNumber()}"> Episode Number </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
+</body>
+</html>
